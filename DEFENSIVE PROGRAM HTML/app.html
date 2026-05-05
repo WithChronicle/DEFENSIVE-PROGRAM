@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIMOBS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #d9c29c;
+      display: flex;
+      justify-content: center;
+    }
+
+    .app {
+      width: 360px;
+      height: 100vh;
+      background: #e6cfa3;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      margin-top: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 20px;
+      border: none;
+      background: #f4b400;
+      margin-top: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .card {
+      background: #f4b400;
+      padding: 15px;
+      border-radius: 15px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .list {
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      background: #f4b400;
+      padding: 10px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .page { display: none; }
+    .active { display: block; }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="content">
+
+    <!-- LOGIN -->
+    <div id="loginPage" class="page active">
+      <h2>SIMOBS</h2>
+
+      <input type="text" id="email" placeholder="Masukkan Email">
+      <button onclick="kirimOTP()">Kirim OTP</button>
+    </div>
+
+    <!-- OTP -->
+    <div id="otpPage" class="page">
+      <h2>Verifikasi OTP</h2>
+
+      <input type="text" id="otpInput" placeholder="Masukkan OTP">
+      <button onclick="verifikasiOTP()">Verifikasi</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardPage" class="page">
+
+      <!-- BERANDA -->
+      <div id="beranda" class="subpage active">
+        <h2>SIMOBS</h2>
+        <div class="card">📅 Booking Servis</div>
+        <div class="card">🔍 Cek Status Servis</div>
+        <div class="card">💰 Transaksi</div>
+      </div>
+
+      <!-- SERVIS -->
+      <div id="servis" class="subpage">
+        <h2>Status Servis</h2>
+        <div class="list">✔ Servis Diterima</div>
+        <div class="list">🔄 Sedang Diproses</div>
+        <div class="list">✅ Selesai</div>
+      </div>
+
+      <!-- SPAREPART -->
+      <div id="sparepart" class="subpage">
+        <h2>Sparepart</h2>
+
+        <div class="card">Oli Motor</div>
+        <div class="list">Yamalube - 50k</div>
+        <div class="list">Castrol - 60k</div>
+
+        <div class="card">Busi</div>
+        <div class="list">NGK - 20k</div>
+        <div class="list">Denso - 25k</div>
+      </div>
+
+      <!-- RIWAYAT -->
+      <div id="riwayat" class="subpage">
+        <h2>Riwayat</h2>
+        <div class="list">Servis 1 - Ganti Oli</div>
+        <div class="list">Servis 2 - Ganti Busi</div>
+      </div>
+
+      <!-- PROFIL -->
+      <div id="profil" class="subpage">
+        <h2>Pengaturan</h2>
+        <div class="card">🔔 Notifikasi</div>
+        <div class="card">🔒 Privasi</div>
+        <div class="card">❓ Bantuan</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- NAVBAR (HANYA MUNCUL SETELAH LOGIN) -->
+  <div class="bottom-nav" id="navbar" style="display:none;">
+    <div class="nav-item" onclick="showSub('beranda')">🏠<br>Beranda</div>
+    <div class="nav-item" onclick="showSub('servis')">🔧<br>Servis</div>
+    <div class="nav-item" onclick="showSub('sparepart')">⚙️<br>Sparepart</div>
+    <div class="nav-item" onclick="showSub('riwayat')">📄<br>Riwayat</div>
+    <div class="nav-item" onclick="showSub('profil')">👤<br>Profil</div>
+  </div>
+
+</div>
+
+<script>
+let otpGlobal;
+
+// pindah page utama
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+// pindah menu dashboard
+function showSub(id) {
+  document.querySelectorAll(".subpage").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+// kirim OTP
+function kirimOTP() {
+  let email = document.getElementById("email").value;
+
+  if (email === "") {
+    alert("Email tidak boleh kosong!");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    alert("Email tidak valid!");
+    return;
+  }
+
+  otpGlobal = Math.floor(100000 + Math.random() * 900000);
+  alert("OTP: " + otpGlobal);
+
+  showPage("otpPage");
+}
+
+// verifikasi OTP
+function verifikasiOTP() {
+  let otpInput = document.getElementById("otpInput").value;
+
+  if (otpInput === "") {
+    alert("OTP tidak boleh kosong!");
+    return;
+  }
+
+  if (otpInput.length != 6) {
+    alert("OTP harus 6 digit!");
+    return;
+  }
+
+  if (otpInput == otpGlobal) {
+    showPage("dashboardPage");
+    document.getElementById("navbar").style.display = "flex";
+  } else {
+    alert("OTP salah!");
+  }
+}
+</script>
+
+</body>
+</html>

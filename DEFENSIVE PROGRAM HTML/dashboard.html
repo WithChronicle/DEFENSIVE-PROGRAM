@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Dashboard SIMOBS 🚀</h1>
+
+<ul>
+  <li>Pelanggan</li>
+  <li>Kendaraan</li>
+  <li>Servis</li>
+  <li>Sparepart</li>
+</ul>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIMOBS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <h2>SIMOBS</h2>
+
+  <!-- MENU -->
+  <div class="menu">
+    <div class="menu-item" onclick="showPage('beranda')">🏠 Beranda</div>
+    <div class="menu-item" onclick="showPage('servis')">🔧 Servis</div>
+    <div class="menu-item" onclick="showPage('sparepart')">⚙️ Sparepart</div>
+    <div class="menu-item" onclick="showPage('riwayat')">📄 Riwayat</div>
+    <div class="menu-item" onclick="showPage('profil')">👤 Profil</div>
+  </div>
+
+  <!-- ISI HALAMAN -->
+  <div id="beranda" class="content active">
+    <h3>Menu Utama</h3>
+    <p>Booking Servis</p>
+    <p>Cek Status Servis</p>
+    <p>Transaksi</p>
+  </div>
+
+  <div id="servis" class="content">
+    <h3>Status Servis</h3>
+    <p>✔ Servis diterima</p>
+    <p>🔄 Sedang diproses</p>
+    <p>✅ Selesai</p>
+  </div>
+
+  <div id="sparepart" class="content">
+    <h3>Sparepart</h3>
+
+    <p><b>Oli Motor:</b></p>
+    <ul>
+      <li>Yamalube - 50.000</li>
+      <li>Castrol - 60.000</li>
+    </ul>
+
+    <p><b>Busi:</b></p>
+    <ul>
+      <li>NGK - 20.000</li>
+      <li>Denso - 25.000</li>
+    </ul>
+  </div>
+
+  <div id="riwayat" class="content">
+    <h3>Riwayat Servis</h3>
+    <p>Servis 1 - Ganti Oli</p>
+    <p>Servis 2 - Ganti Busi</p>
+  </div>
+
+  <div id="profil" class="content">
+    <h3>Pengaturan</h3>
+    <p>Notifikasi</p>
+    <p>Privasi</p>
+    <p>Bantuan</p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
