@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="header">
+<h2>SIMOBS</h2>
+</div>
+
+<form method="POST" action="/login">
+<input class="input" name="user" placeholder="Email / No HP">
+<input class="input" type="password" name="password" placeholder="Password">
+<button class="btn">Masuk</button>
+</form>
+
+<a href="/register">Daftar</a>
+
+{% endblock %}

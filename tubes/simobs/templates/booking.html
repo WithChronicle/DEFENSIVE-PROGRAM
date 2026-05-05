@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="header">
+<a href="javascript:history.back()" class="back">⬅</a>
+<h2>Booking</h2>
+</div>
+
+<form action="/do_booking" method="POST">
+<input class="input" name="motor" placeholder="Motor">
+<input class="input" name="keluhan" placeholder="Keluhan">
+<button class="btn">Booking</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="header">
+<h2>Daftar</h2>
+</div>
+
+<form method="POST" action="/do_register">
+<input class="input" name="nama" placeholder="Nama">
+<input class="input" name="email" placeholder="Email">
+<input class="input" name="no_hp" placeholder="No HP">
+<input class="input" type="password" name="password" placeholder="Password">
+<button class="btn">Daftar</button>
+</form>
+
+{% endblock %}

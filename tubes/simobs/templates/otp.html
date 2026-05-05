@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="modal">
+  <div class="modal-box">
+    <h3>Masukkan OTP</h3>
+
+    <form method="POST" action="/verify_otp">
+      <input name="otp">
+      <button class="btn">Verifikasi</button>
+    </form>
+
+    <p id="timer">60</p>
+
+    <a href="/resend_otp">Kirim ulang</a>
+  </div>
+</div>
+
+<script>
+let t=60;
+setInterval(()=>{
+t--;
+document.getElementById("timer").innerText=t+" detik";
+},1000);
+</script>
+
+{% endblock %}

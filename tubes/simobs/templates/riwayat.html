@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="header">
+<a href="javascript:history.back()" class="back">⬅</a>
+<h2>Riwayat</h2>
+</div>
+
+{% for d in data %}
+<div class="card">
+{{d[2]}} - {{d[4]}}
+</div>
+{% endfor %}
+
+{% endblock %}

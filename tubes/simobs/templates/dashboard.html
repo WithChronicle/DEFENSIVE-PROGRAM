@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="header">
+<h2>Halo {{nama}}</h2>
+<p>Ada yang bisa kami bantu hari ini?</p>
+</div>
+
+<div class="card">📅 Booking Servis</div>
+<div class="card">📋 Cek Status Servis</div>
+
+<div class="card">
+<b>Tawaran Spesial</b>
+<h2>20% Potongan Harga</h2>
+<p>Sampai 30 April 2026</p>
+</div>
+
+<div class="card">
+<b>Catatan Servis Terakhir</b>
+<div class="row">
+<span>Tanggal</span><span>Maret 15 2026</span>
+</div>
+<div class="row">
+<span>Jenis Servis</span><span>Servis Penuh</span>
+</div>
+<div class="row">
+<span>Total</span><span>Rp 350.000</span>
+</div>
+</div>
+
+<div class="navbar">
+<a class="active">🏠<br>Beranda</a>
+<a href="/booking">🔧<br>Servis</a>
+<a href="/sparepart">🛠<br>Sparepart</a>
+<a href="/riwayat">⏰<br>Riwayat</a>
+</div>
+
+{% endblock %}
